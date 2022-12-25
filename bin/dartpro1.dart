@@ -4,6 +4,7 @@ import 'classes/patients.dart';
 import 'dart:math';
 String ?name1,pId1,dId1,sId1,diagnose1,part1;
 List<Patient> list = [];
+String? inneroption3;
 
 
 void main(List<String> arguments) {
@@ -24,9 +25,8 @@ void main(List<String> arguments) {
     case '1':
     print('hi add');
 
-  print('please enter your option:1-patient 2-physicion 3-personel');
-  String? inneroption = stdin.readLineSync();
-        switch(inneroption){
+  readLine();
+        switch(inneroption3){
           case '1':   
           var pt =  pAdd(); 
           list.add(pt);
@@ -51,9 +51,8 @@ void main(List<String> arguments) {
         
 
       
-          print('please enter your option:1-patient 2-physicion 3-personel');
-          String? inneroption1 = stdin.readLineSync();
-        switch(inneroption1){
+     readLine();
+        switch(inneroption3){
           case '1':   
               for(var i in list){
               print(i);
@@ -76,8 +75,7 @@ void main(List<String> arguments) {
       break;
 
     case '3':
-  print('please enter your option:1-patient 2-physicion 3-personel');
-    String? inneroption3 = stdin.readLineSync();
+  readLine();
           switch(inneroption3){
 
           case '1':   
@@ -109,11 +107,8 @@ void main(List<String> arguments) {
       break;
 
     case '5':
-        print('please enter your option:1-patient 2-physicion 3-personel');
-        String? inneroption3 = stdin.readLineSync();
+       readLine();
          
-
-
         switch(inneroption3){
 
           case '1':  
@@ -177,13 +172,13 @@ void search(String key){
     if(list[i].name == key || list[i].diagnose == key || list[i].pId == key || list[i].part == key){
 
       print(list[i]);
-
-
     }
-    
-
   }
+}
 
+void readLine(){
+  print('please enter your option:1-patient 2-physicion 3-personel');
+   inneroption3 = stdin.readLineSync();
 
 
 }
