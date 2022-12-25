@@ -102,6 +102,12 @@ void main(List<String> arguments) {
 
     case '4':
         print('hi update');
+        String? searchItem11 = stdin.readLineSync();
+        List myList = search(searchItem11!);
+        // readLine();
+        print('please enter your update data ');
+        String? inneroption5 = stdin.readLineSync()!;
+        upDate(inneroption5,list);
 
       
       break;
@@ -167,13 +173,15 @@ return patient;
 
 }
 
-void search(String key){
+List search(String key){
   for(var i = 0 ; i<list.length ; i++){
     if(list[i].name == key || list[i].diagnose == key || list[i].pId == key || list[i].part == key){
 
-      print(list[i]);
+     print(list[i]);
     }
   }
+  return list;
+   
 }
 
 void readLine(){
@@ -183,4 +191,25 @@ void readLine(){
 
 }
 
+void upDate(String key,List myList){
 
+  print('please enter your option:1-name 2-id ');
+   String? inneroption4 = stdin.readLineSync()!;
+
+  
+  for(var i = 0 ; i<list.length ; i++){
+    
+ switch(inneroption4){
+    case 'name':
+      myList[i].name = key;
+      break;
+    case 'id' :
+       myList[i].pId = key;
+    
+      break;
+   
+  }
+  break;
+     
+  }
+}
