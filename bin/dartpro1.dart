@@ -16,14 +16,13 @@ void main(List<String> arguments) {
   while(bl){
   print('please enter your option:1-add 2-show 3-delete 4-update 5-search ');
   String? options = stdin.readLineSync();
-  // Random random = Random();
-  // int randNum = random.nextInt(100000)+1000;
+  
   int num = 0;
 
   
   switch (options) {
     case '1':
-    print('hi add');
+   
 
   readLine();
         switch(inneroption3){
@@ -78,11 +77,12 @@ void main(List<String> arguments) {
   readLine();
           switch(inneroption3){
 
-          case '1':   
-
+          case '1':  
+          print('please enter your search item based on :1-name 2-id ');
+          String? serahcItem = stdin.readLineSync();
           
-      
-        
+          
+          deleteItem(serahcItem!, list);
           
             break;
           case '2':
@@ -101,13 +101,13 @@ void main(List<String> arguments) {
       break;
 
     case '4':
-        print('hi update');
-        String? searchItem11 = stdin.readLineSync();
-        List myList = search(searchItem11!);
-        // readLine();
+          print('please enter your option:1-name 2-id ');
+          String? inneroption4 = stdin.readLineSync();
         print('please enter your update data ');
         String? inneroption5 = stdin.readLineSync()!;
-        upDate(inneroption5,list);
+         print('please enter your update data ');
+        String? changeKey = stdin.readLineSync()!;
+        upDate(inneroption4! , inneroption5,changeKey,list);
 
       
       break;
@@ -148,7 +148,7 @@ void main(List<String> arguments) {
   print('do you want to continio?(Y/N)');
   String? contin = stdin.readLineSync();
   if(contin == "N" || contin == "n"){
-    print('By');
+    print('Bye');
     bl = false;
     break;
   }
@@ -162,12 +162,15 @@ void main(List<String> arguments) {
 
 Patient pAdd(){
 
-  
- name1 = stdin.readLineSync();
+  print('name:');
+  name1 = stdin.readLineSync();
+  print('ID:');
   pId1 = stdin.readLineSync();
+  print('Diagnosis:');
   diagnose1 = stdin.readLineSync();
+  print('Department:');
   part1 = stdin.readLineSync();
-Patient patient = Patient(pId1!, diagnose1!, name1!, part1!);
+  Patient patient = Patient(pId1!, diagnose1!, name1!, part1!);
 
 return patient;
 
@@ -176,7 +179,6 @@ return patient;
 List search(String key){
   for(var i = 0 ; i<list.length ; i++){
     if(list[i].name == key || list[i].diagnose == key || list[i].pId == key || list[i].part == key){
-
      print(list[i]);
     }
   }
@@ -187,29 +189,32 @@ List search(String key){
 void readLine(){
   print('please enter your option:1-patient 2-physicion 3-personel');
    inneroption3 = stdin.readLineSync();
-
-
 }
 
-void upDate(String key,List myList){
-
-  print('please enter your option:1-name 2-id ');
-   String? inneroption4 = stdin.readLineSync()!;
-
+void upDate(String inneroption4 , String key ,String changeKey ,List myList){
+    myList = search(key);
   
-  for(var i = 0 ; i<list.length ; i++){
+  for(var i = 0 ; i<myList.length ; i++){
     
  switch(inneroption4){
-    case 'name':
-      myList[i].name = key;
+    case '1':
+      myList[i].name = changeKey;
       break;
-    case 'id' :
-       myList[i].pId = key;
+    case '2' :
+       myList[i].pId = changeKey;
     
       break;
    
   }
   break;
      
+  }
+}
+
+void deleteItem(String serahcItem,List myList){
+  myList = search(serahcItem);
+  for(var i = 0 ; i< myList.length;i++){
+    myList.remove(myList[i]);
+    break;
   }
 }

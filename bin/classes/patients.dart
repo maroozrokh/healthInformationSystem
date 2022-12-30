@@ -6,7 +6,8 @@ class Patient {
   String _diagnose,_name,_part;
   
  
-
+///{} in constructor means nullable
+///when using getter and setter we cant use nullable?? sign
   Patient(this._pId , this._diagnose ,this._name , this._part ) ;
 
 
